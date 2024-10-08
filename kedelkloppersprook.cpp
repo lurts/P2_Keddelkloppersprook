@@ -30,9 +30,6 @@ std::string nextWord(std::string& line) {
     return word;
 }
 
-
-
-
 // Übersetzt ein Wort gemäß den Regeln der Keddelkloppersprook-Sprache
 std::string translateWord(std::string& word) {
     // Findet die Position des ersten Vokals im Wort
@@ -78,13 +75,11 @@ std::string assembleSentence(std::string& line) {
 
     while (line.length() > 0) {
         word = nextWord(line);
-
         sentence += translateWord(word);
     }
 
     return sentence;
 }
-
 
 void toLowercase(std::string &word) {
     for (char &c : word)
