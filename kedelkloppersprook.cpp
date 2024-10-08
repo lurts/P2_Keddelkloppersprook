@@ -6,7 +6,7 @@
 #include "kedelkloppersprook.h"
 
 
-// Funktion, um das nächste Wort in einer Zeile ab der Position pos zu extrahieren
+// Funktion, um das nächste Wort in einer Zeile zu extrahieren
 std::string nextWord(std::string& line) {
     std::string word;
 
