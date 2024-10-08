@@ -1,5 +1,5 @@
 //
-// Created by lars on 07.11.23.
+// Created by lars on 2024-10-08.
 //
 #include <string>
 #include <iostream>
@@ -10,30 +10,22 @@
 std::string nextWord(std::string& line) {
     std::string word;
 
-    while (true) {
-        char c = line[0];
-        if (isalpha(c)) {
-            word += c;
-            line.erase(0, 1);
-        }
-        else if (isspace(c)) {
-            line.erase(0, 1);
-            break;
-        }
-        else if (isdigit(c)) {
-            word += c;
-            line.erase(0, 1);
-        }
-        else if (ispunct(c)) {
-            word += c;
-            line.erase(0, 1);
-            break;
-        }
-        else if (c == '\0')
-            break;
+   int endWord = line.find_first_of(" .,");
 
-        //std::cout << line << "\n" << word << "\n\n";
-    }
+   if (endWord == 0) {
+       word = line.substr(0,1);
+       line.erase(0,1);
+       return word;
+   }
+
+   if (endWord != std::string::npos) {
+       word = line.substr(0, endWord);
+       line.erase(0, endWord);
+       return word;
+   }
+
+   word = line;
+   line.erase(0, endWord);
 
     return word;
 }
@@ -46,15 +38,6 @@ std::string translateWord(std::string& word) {
     // Findet die Position des ersten Vokals im Wort
     //size_t vowelPosition = word.find_first_of("aeiou");
     int vowelPosition = 0;
-
-
-    //Durch das word iterieren und nach vokalen suchen
-    //for (char c: word) {
-    //    if (c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u') {
-    //        break;
-    //    }
-    //    vowelPosition++;
-    //}
 
     vowelPosition = word.find_first_of("aeiou");
 
@@ -96,7 +79,7 @@ std::string assembleSentence(std::string& line) {
     while (line.length() > 0) {
         word = nextWord(line);
 
-        sentence += translateWord(word) + " ";
+        sentence += translateWord(word);
     }
 
     return sentence;

@@ -2,6 +2,9 @@
 #include <string>
 #include "kedelkloppersprook.h"
 
+//Zeilen zum testen
+//Wann mol iuwer ne dumme Sake Gras wassen is, dann kiemmet ganz sieker en Kameil un frietert wie af.
+
 int main() {
     std::string text;
     std::cout << "Zu uebersetzender Text: \n";
